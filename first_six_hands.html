@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Your First Six Bridge Hands — Lesson 1E Practice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <style>
+    :root {
+      --bg-ivory: #fbf9f4;
+      --bg-parchment: #f4efe4;
+      --bg-card: #ffffff;
+      --border-stone: #e2dbc8;
+      --border-strong: #cbbd9f;
+      --baize-900: #132f23;
+      --baize-800: #1b4332;
+      --baize-700: #245540;
+      --baize-100: #e9f2ed;
+      --baize-50: #f3f8f5;
+      --burgundy-900: #5e1f1b;
+      --burgundy-800: #7b2d26;
+      --burgundy-700: #94372f;
+      --burgundy-100: #faeae8;
+      --burgundy-50: #fdf5f4;
+      --charcoal-900: #1e2421;
+      --charcoal-700: #37413c;
+      --charcoal-500: #5c6660;
+      --gold-100: #f9f1dc;
+      --gold-800: #6e5211;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-ivory);
+      color: var(--charcoal-900);
+      line-height: 1.55;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .serif-heading {
+      font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      letter-spacing: -0.01em;
+      color: var(--charcoal-900);
+      margin-top: 0;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--baize-800) !important;
+      outline-offset: 2px !important;
+    }
+
+    /* Header */
+    .club-header {
+      background-color: var(--baize-900);
+      color: #fbf9f4;
+      border-bottom: 2px solid #28503d;
+    }
+    .club-header h1 {
+      color: #fbf9f4 !important;
+      margin: 0;
+      font-size: 1.15rem;
+    }
+    .club-header p {
+      color: #cfe0d5 !important;
+      margin: 0;
+      font-size: 0.78rem;
+    }
+
+    .club-container {
+      width: 100%;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    @media (min-width: 640px) {
+      .club-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+
+    /* Panels */
+    .club-panel {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-stone);
+      border-radius: 16px;
+      box-shadow: 0 3px 14px rgba(27, 67, 50, 0.05);
+      padding: 1.35rem;
+    }
+    @media (min-width: 640px) {
+      .club-panel {
+        padding: 1.75rem;
+      }
+    }
+
+    .club-panel-parchment {
+      background-color: var(--bg-parchment);
+      border: 1px solid var(--border-stone);
+      border-radius: 14px;
+      padding: 1.15rem;
+    }
+
+    .club-panel-baize {
+      background-color: var(--baize-50);
+      border: 1px solid #c5ddd0;
+      border-radius: 14px;
+      padding: 1.15rem;
+      color: var(--baize-900);
+    }
+
+    .club-panel-burgundy {
+      background-color: var(--burgundy-50);
+      border: 1px solid #e4bdb8;
+      border-radius: 14px;
+      padding: 1.15rem;
+      color: var(--burgundy-900);
+    }
+
+    /* Buttons */
+    .btn-baize {
+      background-color: var(--baize-800);
+      color: #ffffff;
+      border: 1px solid var(--baize-900);
+      border-radius: 10px;
+      padding: 0.65rem 1.2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      transition: background-color 0.15s ease;
+    }
+    .btn-baize:hover {
+      background-color: var(--baize-900);
+    }
+
+    .btn-burgundy {
+      background-color: var(--burgundy-800);
+      color: #ffffff;
+      border: 1px solid var(--burgundy-900);
+      border-radius: 10px;
+      padding: 0.6rem 1.1rem;
+      font-size: 0.86rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: background-color 0.15s ease;
+    }
+    .btn-burgundy:hover {
+      background-color: var(--burgundy-900);
+    }
+
+    .btn-burgundy-outline {
+      background-color: var(--burgundy-50);
+      color: var(--burgundy-900);
+      border: 1px solid #dca8a1;
+      border-radius: 10px;
+      padding: 0.55rem 1rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: background-color 0.15s ease;
+    }
+    .btn-burgundy-outline:hover {
+      background-color: var(--burgundy-100);
+    }
+
+    .btn-ivory {
+      background-color: #ffffff;
+      color: var(--charcoal-900);
+      border: 1px solid var(--border-strong);
+      border-radius: 10px;
+      padding: 0.6rem 1.05rem;
+      font-size: 0.86rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: background-color 0.15s ease;
+    }
+    .btn-ivory:hover {
+      background-color: var(--bg-parchment);
+    }
+
+    /* Stepper Pills */
+    .stepper-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+    }
+    .step-pill {
+      background-color: #ffffff;
+      color: var(--charcoal-700);
+      border: 1px solid var(--border-stone);
+      border-radius: 999px;
+      padding: 0.35rem 0.78rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.15s ease;
+    }
+    .step-pill:hover {
+      background-color: var(--bg-parchment);
+      border-color: var(--border-strong);
+    }
+    .step-pill-active {
+      background-color: var(--baize-800);
+      color: #ffffff;
+      border-color: var(--baize-900);
+    }
+    .step-pill-active:hover {
+      background-color: var(--baize-900);
+      color: #ffffff;
+    }
+    .step-pill-done {
+      border-color: #9ec5b0;
+      background-color: var(--baize-50);
+      color: var(--baize-900);
+    }
+    .step-pill-confused {
+      border-color: #dca8a1;
+      background-color: var(--burgundy-50);
+      color: var(--burgundy-900);
+    }
+
+    /* Progress Bar */
+    .progress-track {
+      width: 100%;
+      height: 7px;
+      background-color: #e6dfd0;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background-color: var(--baize-800);
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+
+    /* Playing Card & Single Hand Split Layout */
+    .suit-spade, .suit-club {
+      color: #1a211e;
+      font-weight: 700;
+    }
+    .suit-heart, .suit-diamond {
+      color: #9e2a2b;
+      font-weight: 700;
+    }
+
+    .single-hand-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.35rem;
+      align-items: start;
+    }
+    @media (min-width: 680px) {
+      .single-hand-grid {
+        grid-template-columns: minmax(240px, 0.92fr) minmax(280px, 1.15fr);
+        gap: 1.75rem;
+      }
+    }
+
+    .playing-card-frame {
+      background-color: var(--bg-ivory);
+      border: 2px solid var(--border-stone);
+      border-radius: 14px;
+      padding: 1.15rem 1.25rem;
+      box-shadow: inset 0 1px 0 #ffffff, 0 2px 6px rgba(27, 67, 50, 0.04);
+    }
+
+    .suit-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px dashed #e5decb;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 1.12rem;
+    }
+    .suit-row:last-child {
+      border-bottom: none;
+    }
+    .suit-symbol-col {
+      width: 1.6rem;
+      text-align: center;
+      font-size: 1.3rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .suit-cards-col {
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--charcoal-900);
+    }
+
+    /* Form Controls */
+    .club-label {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--charcoal-900);
+      margin-bottom: 0.35rem;
+    }
+    .club-hint {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--charcoal-500);
+      margin-bottom: 0.4rem;
+    }
+    .club-input, .club-select, .club-textarea {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border-radius: 10px;
+      border: 1px solid var(--border-strong);
+      background-color: #ffffff;
+      color: var(--charcoal-900);
+      font-size: 0.92rem;
+      font-family: inherit;
+    }
+
+    /* Quick Bid Choice Buttons */
+    .bid-choices-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    @media (min-width: 480px) {
+      .bid-choices-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+    .bid-choice-btn {
+      background-color: #ffffff;
+      color: var(--charcoal-900);
+      border: 1px solid var(--border-strong);
+      border-radius: 10px;
+      padding: 0.55rem 0.5rem;
+      font-size: 0.86rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+    .bid-choice-btn:hover {
+      background-color: var(--bg-parchment);
+    }
+    .bid-choice-btn-active {
+      background-color: var(--baize-800);
+      color: #ffffff;
+      border-color: var(--baize-900);
+      box-shadow: 0 1px 4px rgba(19, 47, 35, 0.2);
+    }
+
+    /* Rules Reference 2x2 Grid */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+    }
+    @media (min-width: 640px) {
+      .rules-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .recap-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+    }
+    @media (min-width: 680px) {
+      .recap-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .badge-baize {
+      background-color: var(--baize-100);
+      color: var(--baize-900);
+      border: 1px solid #b7d7c5;
+    }
+    .badge-burgundy {
+      background-color: var(--burgundy-100);
+      color: var(--burgundy-900);
+      border: 1px solid #e0b4af;
+    }
+    .badge-stone {
+      background-color: #f0ece1;
+      color: var(--charcoal-700);
+      border: 1px solid var(--border-strong);
+    }
+    .badge-gold {
+      background-color: var(--gold-100);
+      color: var(--gold-800);
+      border: 1px solid #e5d19c;
+    }
+
+    /* Utilities */
+    .flex { display: flex; }
+    .flex-wrap { flex-wrap: wrap; }
+    .items-center { align-items: center; }
+    .items-start { align-items: flex-start; }
+    .justify-between { justify-content: space-between; }
+    .justify-end { justify-content: flex-end; }
+    .gap-2 { gap: 0.5rem; }
+    .gap-3 { gap: 0.75rem; }
+    .gap-4 { gap: 1rem; }
+    .space-y-2 > * + * { margin-top: 0.5rem; }
+    .space-y-3 > * + * { margin-top: 0.75rem; }
+    .space-y-4 > * + * { margin-top: 1rem; }
+    .space-y-5 > * + * { margin-top: 1.25rem; }
+    .m-0 { margin: 0 !important; }
+    .mt-1 { margin-top: 0.25rem; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mt-3 { margin-top: 0.75rem; }
+    .mb-1 { margin-bottom: 0.25rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .pt-3 { padding-top: 0.75rem; }
+    .pb-3 { padding-bottom: 0.75rem; }
+    .border-t { border-top: 1px solid var(--border-stone); }
+    .border-b { border-bottom: 1px solid var(--border-stone); }
+    .text-xs { font-size: 0.8rem; }
+    .text-sm { font-size: 0.9rem; }
+    .text-base { font-size: 1rem; }
+    .text-lg { font-size: 1.18rem; }
+    .text-xl { font-size: 1.38rem; }
+    .text-2xl { font-size: 1.65rem; }
+    .font-bold { font-weight: 700; }
+    .font-semibold { font-weight: 600; }
+    .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    .italic { font-style: italic; }
+    .w-full { width: 100%; }
+  </style>
+</head>
+<body>
+
+  <!-- ===================================================================== -->
+  <!-- BRIDGE CLUB HEADER                                                    -->
+  <!-- ===================================================================== -->
+  <header class="club-header">
+    <div class="club-container" style="padding-top: 0.85rem; padding-bottom: 0.85rem;">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div style="width: 2.4rem; height: 2.4rem; border-radius: 10px; background: #fbf9f4; color: #132f23; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; border: 1px solid #cbbd9f;" aria-hidden="true">
+            <span>♠</span><span style="color: #9e2a2b; margin-left: 2px;">♥</span>
+          </div>
+          <div>
+            <h1 class="serif-heading">Your First Six Bridge Hands</h1>
+            <p>Lesson 1E · Five-Card Major Bidding · Responding to Partner's 1♥</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <span id="browserSaveBadge" class="badge badge-gold" title="No account or login needed. Your progress stays in this browser until you copy or download your recap.">
+            Saved in this browser only
+          </span>
+          <button id="btnToggleCheatSheet" type="button" onclick="toggleRulesSheet()" class="btn-ivory" style="padding: 0.38rem 0.75rem; font-size: 0.78rem;">
+            Quick Rules Guide
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Toast Notification -->
+  <div id="toastArea" role="status" aria-live="polite" style="position: fixed; bottom: 1rem; right: 1rem; z-index: 50; max-width: 24rem;"></div>
+
+  <!-- ===================================================================== -->
+  <!-- MAIN STUDY TABLE WORKSPACE                                            -->
+  <!-- ===================================================================== -->
+  <main class="club-container" style="padding-top: 1.4rem; padding-bottom: 2.5rem; flex: 1;">
+    <div class="space-y-4">
+
+      <!-- Top Step Navigation & Progress Bar -->
+      <nav class="club-panel" style="padding: 1rem 1.25rem;" aria-label="Exercise steps">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <div id="stepPillsContainer" class="stepper-row"></div>
+          <span id="overallProgressText" class="text-xs font-semibold" style="color: var(--baize-800);">0 of 6 hands completed</span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" id="progressBarTrack">
+          <div id="progressBarFill" class="progress-fill" style="width: 0%;"></div>
+        </div>
+      </nav>
+
+      <!-- Collapsible Quick Rules Guide (Toggleable anytime while viewing a hand) -->
+      <section id="floatingRulesDrawer" class="hidden club-panel-parchment space-y-3" aria-label="Quick Rules Reference">
+        <div class="flex items-center justify-between border-b pb-2">
+          <h2 class="serif-heading text-base font-bold m-0">Quick Reference: Points &amp; Bidding Over Partner's 1♥</h2>
+          <button type="button" onclick="toggleRulesSheet()" class="btn-ivory" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;">Hide Guide ✕</button>
+        </div>
+        <div class="rules-grid text-xs">
+          <div style="background: #ffffff; border: 1px solid var(--border-stone); border-radius: 10px; padding: 0.75rem;">
+            <div class="font-bold mb-1">1. Card Symbols &amp; Notation</div>
+            <div>Suits are always listed in order: <span class="suit-spade">♠</span> Spades, <span class="suit-heart">♥</span> Hearts, <span class="suit-diamond">♦</span> Diamonds, <span class="suit-club">♣</span> Clubs. <strong>A, K, Q, J</strong> are honour cards; each <strong>*</strong> is a small spot card (2–10) worth 0 high-card points.</div>
+          </div>
+          <div style="background: #ffffff; border: 1px solid var(--border-stone); border-radius: 10px; padding: 0.75rem;">
+            <div class="font-bold mb-1">2. High Card Points (HCP)</div>
+            <div><strong>Ace (A)</strong> = 4 pts · <strong>King (K)</strong> = 3 pts · <strong>Queen (Q)</strong> = 2 pts · <strong>Jack (J)</strong> = 1 pt · <strong>Small card (*)</strong> = 0 pts.</div>
+          </div>
+          <div style="background: #ffffff; border: 1px solid var(--border-stone); border-radius: 10px; padding: 0.75rem;">
+            <div class="font-bold mb-1">3. Heart Fit &amp; Distribution (TCP)</div>
+            <div>Partner's <strong>1♥</strong> promises <strong>5+ hearts</strong>. With <strong>3+ hearts</strong> in your hand, you have an 8+ card heart fit! Add short-suit points to get <strong>Total Card Points (TCP)</strong>: <strong>Void</strong> (0 cards) = +5 · <strong>Singleton</strong> (1 card) = +3 · <strong>Doubleton</strong> (2 cards) = +1.</div>
+          </div>
+          <div style="background: #ffffff; border: 1px solid var(--border-stone); border-radius: 10px; padding: 0.75rem;">
+            <div class="font-bold mb-1">4. Your Response Bid Over 1♥</div>
+            <div><strong>Pass</strong> = under 6 points · <strong>2♥</strong> = 3+ ♥ and 6–9 TCP · <strong>3♥</strong> = 3+ ♥ and 10–12 TCP · <strong>4♥</strong> = 3+ ♥ and 13–17 TCP.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- STEP 0: WELCOMING INTRODUCTION SCREEN                             -->
+      <!-- ================================================================= -->
+      <section id="viewIntro" class="club-panel space-y-5">
+        <div class="space-y-2">
+          <span class="badge badge-baize">♠ ♥ Welcome to the Table</span>
+          <h2 class="serif-heading text-2xl font-bold m-0">Pull Up a Chair: Your First Six Bridge Hands</h2>
+          <p class="text-sm" style="color: var(--charcoal-700); max-width: 44rem;">
+            Imagine sitting across from your partner at a friendly bridge table. Your partner opens the bidding with <strong>1♥</strong>. Over the next six hands from Lesson 1E, you'll count your points, decide what to bid back, and jot down any questions for Mob.
+          </p>
+        </div>
+
+        <!-- Compact 4-Box Introduction to Notation, Points, Heart Support, and Bids -->
+        <div class="space-y-2">
+          <h3 class="serif-heading text-base font-bold m-0">Everything You Need for This Exercise</h3>
+          <div class="rules-grid text-xs">
+            <div class="club-panel-parchment space-y-1">
+              <div class="font-bold text-sm" style="color: var(--baize-900);">1. Reading Each Hand (<span class="suit-spade">♠</span> <span class="suit-heart">♥</span> <span class="suit-diamond">♦</span> <span class="suit-club">♣</span>)</div>
+              <p class="m-0" style="color: var(--charcoal-700);">
+                Every bridge hand has <strong>13 cards</strong> divided across the four suits: <span class="suit-spade">♠</span> Spades, <span class="suit-heart">♥</span> Hearts, <span class="suit-diamond">♦</span> Diamonds, and <span class="suit-club">♣</span> Clubs. Letters (<strong>A, K, Q, J</strong>) show your high cards, and each asterisk (<strong>*</strong>) stands for a small card (2 through 10).
+              </p>
+            </div>
+
+            <div class="club-panel-parchment space-y-1">
+              <div class="font-bold text-sm" style="color: var(--baize-900);">2. High Card Points (HCP)</div>
+              <p class="m-0" style="color: var(--charcoal-700);">
+                Start by adding up your honour cards:<br/>
+                <strong>Ace (A) = 4</strong> · <strong>King (K) = 3</strong> · <strong>Queen (Q) = 2</strong> · <strong>Jack (J) = 1</strong>.<br/>
+                Small cards (<strong>*</strong>) count as <strong>0 points</strong>.
+              </p>
+            </div>
+
+            <div class="club-panel-parchment space-y-1">
+              <div class="font-bold text-sm" style="color: var(--baize-900);">3. Heart Fit &amp; Total Card Points (TCP)</div>
+              <p class="m-0" style="color: var(--charcoal-700);">
+                When partner opens <strong>1♥</strong>, they promise <strong>at least 5 hearts</strong>. If you hold <strong>3 or more hearts</strong>, your partnership has at least 8 hearts together—a <strong>fit</strong>! When you have a fit, add short-suit distribution points to your HCP:<br/>
+                <strong>Void (0 cards) = +5</strong> · <strong>Singleton (1 card) = +3</strong> · <strong>Doubleton (2 cards) = +1</strong>.
+              </p>
+            </div>
+
+            <div class="club-panel-parchment space-y-1">
+              <div class="font-bold text-sm" style="color: var(--baize-900);">4. Choosing Your Response to 1♥</div>
+              <p class="m-0" style="color: var(--charcoal-700);">
+                Once you have your <strong>Total Card Points (TCP)</strong> and 3+ hearts:<br/>
+                • <strong>Pass</strong> = fewer than 6 points<br/>
+                • <strong>2♥</strong> = 3+ hearts and <strong>6–9 TCP</strong><br/>
+                • <strong>3♥</strong> = 3+ hearts and <strong>10–12 TCP</strong><br/>
+                • <strong>4♥</strong> = 3+ hearts and <strong>13–17 TCP</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Optional Learner Name + Honest Local Storage Explanation -->
+        <div class="club-panel-baize space-y-3">
+          <div class="single-hand-grid" style="align-items: center;">
+            <div>
+              <label for="learnerNameInput" class="club-label" style="color: var(--baize-900);">Your Name (Optional — included on your recap for Mob)</label>
+              <input id="learnerNameInput" type="text" oninput="handleNameChange(this.value)" placeholder="e.g., Amina" class="club-input" />
+            </div>
+            <div class="text-xs space-y-1" style="color: var(--baize-900);">
+              <div class="font-bold">How saving works on this page:</div>
+              <p class="m-0">
+                No account or login is needed. Your answers are saved automatically <strong>only in this browser on your device</strong>—nothing is sent or synced over the internet. At the end of Hand 6, you can copy or download your recap to email to Mob.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t">
+          <span class="text-xs" style="color: var(--charcoal-500);">You can open the Quick Rules Guide on any hand if you want a reminder.</span>
+          <button id="btnStartExercise" type="button" onclick="goToStep(1)" class="btn-baize">
+            Start Hand 1 of 6 →
+          </button>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- STEPS 1–6: ONE HAND AT A TIME                                     -->
+      <!-- ================================================================= -->
+      <section id="viewSingleHand" class="hidden club-panel space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b pb-3">
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span id="currentHandStepBadge" class="badge badge-baize">Hand 1 of 6</span>
+              <span class="badge badge-stone font-mono">13 cards · Partner opens 1♥</span>
+              <span id="currentHandStatusPill" class="badge badge-stone">Not answered yet</span>
+            </div>
+            <h2 id="currentHandHeading" class="serif-heading text-xl font-bold mt-1 m-0">Hand 1 (Row 1, Column 1)</h2>
+          </div>
+          <button type="button" onclick="toggleRulesSheet()" class="btn-ivory" style="font-size: 0.78rem; padding: 0.4rem 0.8rem;">
+            Need the point table?
+          </button>
+        </div>
+
+        <div class="single-hand-grid">
+          <!-- Left Column: The Bridge Hand Card -->
+          <div class="space-y-3">
+            <div class="playing-card-frame" aria-label="Current bridge hand">
+              <div class="flex items-center justify-between text-xs pb-2 mb-2 border-b" style="color: var(--charcoal-500);">
+                <span class="font-semibold uppercase">Your Hand Holdings</span>
+                <span>Partner bid <strong>1♥</strong> (5+ ♥)</span>
+              </div>
+              <div id="currentHandSuitsContainer"></div>
+            </div>
+
+            <div class="club-panel-parchment" style="padding: 0.85rem 1rem;">
+              <div class="text-xs" style="color: var(--charcoal-700);">
+                <strong>Source document note:</strong> <span id="currentHandSourceNote"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Points, Bid, Why, and "I'm Confused" Option -->
+          <div class="space-y-4">
+            <div>
+              <label for="handPointsInput" class="club-label">1. How many Total Card Points (TCP) do you have?</label>
+              <span class="club-hint">Count your High Card Points (A=4, K=3, Q=2, J=1) plus any short-suit points if you have 3+ hearts.</span>
+              <input id="handPointsInput" type="text" inputmode="numeric" oninput="handleCurrentHandInput()" placeholder="e.g., 9" class="club-input" />
+            </div>
+
+            <div>
+              <label for="handBidSelect" class="club-label">2. What is your proposed bid in response to partner's 1♥?</label>
+              <span class="club-hint">Tap a bid button below or choose from the dropdown:</span>
+              <div class="bid-choices-grid" role="group" aria-label="Quick bid selection">
+                <button type="button" id="quickBid_Pass" onclick="selectQuickBid('Pass')" class="bid-choice-btn">Pass</button>
+                <button type="button" id="quickBid_2H" onclick="selectQuickBid('2♥')" class="bid-choice-btn">2♥</button>
+                <button type="button" id="quickBid_3H" onclick="selectQuickBid('3♥')" class="bid-choice-btn">3♥</button>
+                <button type="button" id="quickBid_4H" onclick="selectQuickBid('4♥')" class="bid-choice-btn">4♥</button>
+              </div>
+              <select id="handBidSelect" onchange="handleCurrentHandInput()" class="club-select">
+                <option value="">Choose your proposed bid…</option>
+                <option value="Pass">Pass (&lt; 6 points)</option>
+                <option value="2♥">2♥ (3+ ♥ and 6–9 TCP)</option>
+                <option value="3♥">3♥ (3+ ♥ and 10–12 TCP)</option>
+                <option value="4♥">4♥ (3+ ♥ and 13–17 TCP)</option>
+                <option value="Not sure yet">Not sure yet (see my question below)</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="handWhyInput" class="club-label">3. Why did you choose that? (Optional)</label>
+              <span class="club-hint">Jot down how you counted your points (e.g., "Two Aces = 8 HCP + 1 for doubleton ♦ = 9 TCP").</span>
+              <textarea id="handWhyInput" rows="2" oninput="handleCurrentHandInput()" placeholder="Optional: write your point breakdown or reasoning…" class="club-textarea"></textarea>
+            </div>
+
+            <!-- Visible "I'm confused" Option -->
+            <div class="pt-2 border-t space-y-2">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="text-xs" style="color: var(--charcoal-700);">Unsure about something on this hand?</span>
+                <button id="btnImConfused" type="button" onclick="toggleConfusedBox()" class="btn-burgundy-outline">
+                  I’m confused / Ask a question
+                </button>
+              </div>
+
+              <div id="confusedBoxContainer" class="hidden club-panel-burgundy space-y-2">
+                <div class="flex items-center justify-between">
+                  <label for="handConfusedInput" class="club-label" style="color: var(--burgundy-900); margin-bottom: 0;">
+                    What feels confusing on this hand? (Included in your recap for Mob)
+                  </label>
+                  <button type="button" onclick="clearConfusedOnCurrentHand()" class="btn-ivory" style="padding: 0.2rem 0.55rem; font-size: 0.72rem;">
+                    Clear question
+                  </button>
+                </div>
+                <textarea id="handConfusedInput" rows="2" oninput="handleCurrentHandInput()" placeholder="e.g., Do I still add +1 point for a doubleton when it has a King in it?" class="club-textarea"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Back / Next Hand Navigation -->
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t">
+          <button id="btnPrevHand" type="button" onclick="goPrevStep()" class="btn-ivory">
+            ← Back
+          </button>
+          <span id="autoSaveNotice" class="text-xs" style="color: var(--charcoal-500);">
+            Saved automatically in this browser
+          </span>
+          <button id="btnNextHand" type="button" onclick="goNextStep()" class="btn-baize">
+            Next Hand →
+          </button>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- STEP 7: FINAL RECAP & COPY / DOWNLOAD FOR MANUAL EMAIL TO MOB     -->
+      <!-- ================================================================= -->
+      <section id="viewRecap" class="hidden club-panel space-y-5">
+        <div class="flex flex-wrap items-start justify-between gap-3 border-b pb-3">
+          <div class="space-y-1">
+            <span class="badge badge-baize">All Six Hands Reviewed</span>
+            <h2 class="serif-heading text-2xl font-bold m-0">Your Lesson 1E Recap (First Six Hands)</h2>
+            <p class="text-sm m-0" style="color: var(--charcoal-700);">
+              Here is a complete summary of your answers and questions. Because this practice page saves work only in your browser, use the <strong>Copy</strong> or <strong>Download</strong> buttons below (or select the text directly) to paste your work into an email to Mob.
+            </p>
+          </div>
+          <button type="button" onclick="goToStep(6)" class="btn-ivory">
+            ← Back to Hand 6
+          </button>
+        </div>
+
+        <!-- Readable Visual Cards Recap of All 6 Hands -->
+        <div id="recapHandsGrid" class="recap-grid"></div>
+
+        <!-- Optional Overall Note for Mob -->
+        <div class="club-panel-parchment space-y-2">
+          <label for="overallNoteInput" class="club-label">Any general note or question for Mob? (Optional)</label>
+          <textarea id="overallNoteInput" rows="2" oninput="handleOverallNoteInput(this.value)" placeholder="e.g., Enjoyed the hands! Let me know when we can go over Hand 2." class="club-textarea"></textarea>
+        </div>
+
+        <!-- Copy / Download & Always-Available Selectable-Text Fallback -->
+        <div class="club-panel-baize space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h3 class="serif-heading text-lg font-bold m-0" style="color: var(--baize-900);">Send Your Work to Mob by Email</h3>
+              <p class="text-xs m-0" style="color: var(--baize-900);">
+                Copy the formatted summary below and paste it into an email to Mob, or download it as a <code style="background: #ffffff; padding: 0 4px; border-radius: 4px;">.txt</code> file.
+              </p>
+            </div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <button id="btnCopyRecap" type="button" onclick="copyRecapToClipboard()" class="btn-baize">
+                Copy Summary for Email
+              </button>
+              <button id="btnDownloadRecap" type="button" onclick="downloadRecapTextFile()" class="btn-ivory">
+                Download .txt File
+              </button>
+              <button id="btnSelectAllRecap" type="button" onclick="selectAllFallbackText()" class="btn-ivory">
+                Select Text
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <label for="recapTextFallback" class="club-label" style="color: var(--baize-900);">
+              Selectable-Text Email Summary (If clipboard access is blocked, click inside and press Ctrl+C or Cmd+C):
+            </label>
+            <textarea id="recapTextFallback" rows="12" readonly onclick="this.select()" class="club-textarea font-mono" style="font-size: 0.8rem; background-color: #ffffff;"></textarea>
+          </div>
+        </div>
+
+        <!-- Reset Local Browser Answers Option -->
+        <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t text-xs" style="color: var(--charcoal-500);">
+          <span>Want to clear your saved answers from this browser and start fresh?</span>
+          <button id="btnClearSavedWork" type="button" onclick="resetAllLearnerWork()" class="btn-burgundy-outline" style="padding: 0.38rem 0.8rem; font-size: 0.78rem;">
+            Clear Browser Saved Work
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    // =========================================================================
+    // 1. VERIFIED FIRST SIX HANDS FROM Lesson 1E.docx (NO ANSWER KEYS EMBEDDED)
+    // =========================================================================
+    const LESSON_1E_SIX_HANDS = [
+      {
+        hand_number: 1,
+        label: 'Hand 1 (Row 1, Column 1)',
+        spades: 'A * * *',
+        hearts: 'A * * *',
+        diamonds: '* *',
+        clubs: '* * *',
+        card_count: 13,
+        source_note: 'Suit symbols (♠ ♥ ♦ ♣) explicitly present in Lesson 1E.docx; Hearts line spaced as "A *  * *" (4 cards).'
+      },
+      {
+        hand_number: 2,
+        label: 'Hand 2 (Row 1, Column 2)',
+        spades: 'K * * *',
+        hearts: 'K Q *',
+        diamonds: 'K *',
+        clubs: '* * * *',
+        card_count: 13,
+        source_note: 'Suit symbols omitted in source .docx cell; suits arranged by standard 4-line order (♠, ♥, ♦, ♣).'
+      },
+      {
+        hand_number: 3,
+        label: 'Hand 3 (Row 1, Column 3)',
+        spades: '* * *',
+        hearts: 'K * * *',
+        diamonds: '* * * *',
+        clubs: '* *',
+        card_count: 13,
+        source_note: 'Suit symbols omitted in source .docx cell; Hearts line typed as "K ** *" in source (4 cards total so hand has 13 cards).'
+      },
+      {
+        hand_number: 4,
+        label: 'Hand 4 (Row 1, Column 4)',
+        spades: 'A * *',
+        hearts: 'K Q * * *',
+        diamonds: '* * *',
+        clubs: 'K Q',
+        card_count: 13,
+        source_note: 'Suit symbols omitted in source .docx cell; suits arranged by standard 4-line order (♠, ♥, ♦, ♣).'
+      },
+      {
+        hand_number: 5,
+        label: 'Hand 5 (Row 2, Column 1)',
+        spades: '* * *',
+        hearts: 'K * *',
+        diamonds: 'J * * *',
+        clubs: '* * *',
+        card_count: 13,
+        source_note: 'Suit symbols omitted in source .docx cell; suits arranged by standard 4-line order (♠, ♥, ♦, ♣).'
+      },
+      {
+        hand_number: 6,
+        label: 'Hand 6 (Row 2, Column 2)',
+        spades: 'A * *',
+        hearts: 'K * *',
+        diamonds: '* * *',
+        clubs: 'Q * * *',
+        card_count: 13,
+        source_note: 'Suit symbols omitted in source .docx cell; suits arranged by standard 4-line order (♠, ♥, ♦, ♣).'
+      }
+    ];
+
+    const STORAGE_KEY = 'bridge_first_six_hands_v1';
+
+    function createBlankState() {
+      const hands = {};
+      for (let i = 1; i <= 6; i++) {
+        hands[String(i)] = {
+          points: '',
+          bid: '',
+          why: '',
+          isConfused: false,
+          confusedQuestion: ''
+        };
+      }
+      return {
+        learnerName: '',
+        currentStep: 0, // 0 = Intro, 1..6 = Hands 1..6, 7 = Final Recap
+        hands: hands,
+        overallNote: ''
+      };
+    }
+
+    let state = createBlankState();
+
+    function loadSavedState() {
+      try {
+        let raw = null;
+        try { raw = window.localStorage.getItem(STORAGE_KEY); } catch (e) {}
+        if (!raw && window.name && window.name.startsWith("FSH_STATE:")) {
+          raw = window.name.slice("FSH_STATE:".length);
+        }
+        if (!raw) return;
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== 'object') return;
+        state.learnerName = String(parsed.learnerName || '');
+        state.currentStep = typeof parsed.currentStep === 'number' && parsed.currentStep >= 0 && parsed.currentStep <= 7
+          ? parsed.currentStep
+          : 0;
+        state.overallNote = String(parsed.overallNote || '');
+        if (parsed.hands && typeof parsed.hands === 'object') {
+          for (let i = 1; i <= 6; i++) {
+            const h = parsed.hands[String(i)];
+            if (h && typeof h === 'object') {
+              state.hands[String(i)] = {
+                points: String(h.points || ''),
+                bid: String(h.bid || ''),
+                why: String(h.why || ''),
+                isConfused: Boolean(h.isConfused || String(h.confusedQuestion || '').trim()),
+                confusedQuestion: String(h.confusedQuestion || '')
+              };
+            }
+          }
+        }
+      } catch (e) {
+        // Ignore if localStorage is blocked
+      }
+    }
+
+    function saveState() {
+      const serialized = JSON.stringify(state);
+      try {
+        window.localStorage.setItem(STORAGE_KEY, serialized);
+      } catch (e) {}
+      try {
+        window.name = "FSH_STATE:" + serialized;
+      } catch (e) {}
+    }
+
+    function escapeHtml(str) {
+      return String(str == null ? '' : str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function showToast(msg, isError = false) {
+      const area = document.getElementById('toastArea');
+      if (!area) return;
+      const box = document.createElement('div');
+      box.style.backgroundColor = isError ? '#7b2d26' : '#1b4332';
+      box.style.color = '#ffffff';
+      box.style.padding = '0.7rem 1rem';
+      box.style.borderRadius = '10px';
+      box.style.fontSize = '0.82rem';
+      box.style.fontWeight = '600';
+      box.style.boxShadow = '0 6px 18px rgba(0,0,0,0.18)';
+      box.style.marginTop = '0.5rem';
+      box.textContent = msg;
+      area.appendChild(box);
+      setTimeout(() => { box.remove(); }, 3600);
+    }
+
+    function isHandAddressed(handState) {
+      if (!handState) return false;
+      const hasAnswer = handState.points.trim().length > 0 && handState.bid.trim().length > 0;
+      const hasQuestion = handState.isConfused && handState.confusedQuestion.trim().length > 0;
+      return hasAnswer || hasQuestion;
+    }
+
+    function countCompletedHands() {
+      let count = 0;
+      for (let i = 1; i <= 6; i++) {
+        if (isHandAddressed(state.hands[String(i)])) count++;
+      }
+      return count;
+    }
+
+    function toggleRulesSheet() {
+      const drawer = document.getElementById('floatingRulesDrawer');
+      if (drawer) drawer.classList.toggle('hidden');
+    }
+
+    function handleNameChange(val) {
+      state.learnerName = String(val || '');
+      saveState();
+    }
+
+    function handleOverallNoteInput(val) {
+      state.overallNote = String(val || '');
+      saveState();
+      updateRecapTextOutput();
+    }
+
+    // Flush active hand inputs into state before changing steps
+    function syncCurrentHandInputsIfVisible() {
+      if (state.currentStep >= 1 && state.currentStep <= 6) {
+        const key = String(state.currentStep);
+        const hState = state.hands[key];
+        const ptsEl = document.getElementById('handPointsInput');
+        const bidEl = document.getElementById('handBidSelect');
+        const whyEl = document.getElementById('handWhyInput');
+        const confEl = document.getElementById('handConfusedInput');
+        if (ptsEl) hState.points = ptsEl.value;
+        if (bidEl) hState.bid = bidEl.value;
+        if (whyEl) hState.why = whyEl.value;
+        if (confEl) {
+          hState.confusedQuestion = confEl.value;
+          if (confEl.value.trim().length > 0) {
+            hState.isConfused = true;
+          }
+        }
+        saveState();
+      }
+    }
+
+    function goToStep(stepNum) {
+      syncCurrentHandInputsIfVisible();
+      state.currentStep = Math.max(0, Math.min(7, stepNum));
+      saveState();
+      renderView();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goPrevStep() {
+      if (state.currentStep > 0) {
+        goToStep(state.currentStep - 1);
+      }
+    }
+
+    function goNextStep() {
+      if (state.currentStep < 7) {
+        goToStep(state.currentStep + 1);
+      }
+    }
+
+    function selectQuickBid(bidVal) {
+      if (state.currentStep < 1 || state.currentStep > 6) return;
+      const bidSelect = document.getElementById('handBidSelect');
+      if (bidSelect) {
+        bidSelect.value = bidVal;
+      }
+      handleCurrentHandInput();
+    }
+
+    function toggleConfusedBox() {
+      if (state.currentStep < 1 || state.currentStep > 6) return;
+      const key = String(state.currentStep);
+      const hState = state.hands[key];
+      const box = document.getElementById('confusedBoxContainer');
+      const isHidden = box.classList.contains('hidden');
+      if (isHidden) {
+        hState.isConfused = true;
+        box.classList.remove('hidden');
+        const input = document.getElementById('handConfusedInput');
+        if (input) input.focus();
+      } else if (!hState.confusedQuestion.trim()) {
+        hState.isConfused = false;
+        box.classList.add('hidden');
+      }
+      saveState();
+      updateStepHeaderAndPills();
+    }
+
+    function clearConfusedOnCurrentHand() {
+      if (state.currentStep < 1 || state.currentStep > 6) return;
+      const key = String(state.currentStep);
+      state.hands[key].isConfused = false;
+      state.hands[key].confusedQuestion = '';
+      const confEl = document.getElementById('handConfusedInput');
+      if (confEl) confEl.value = '';
+      document.getElementById('confusedBoxContainer').classList.add('hidden');
+      saveState();
+      updateStepHeaderAndPills();
+    }
+
+    function handleCurrentHandInput() {
+      syncCurrentHandInputsIfVisible();
+      updateQuickBidButtons();
+      updateStepHeaderAndPills();
+    }
+
+    function updateQuickBidButtons() {
+      if (state.currentStep < 1 || state.currentStep > 6) return;
+      const currentBid = (document.getElementById('handBidSelect')?.value || '').trim();
+      const map = [
+        { id: 'quickBid_Pass', val: 'Pass' },
+        { id: 'quickBid_2H', val: '2♥' },
+        { id: 'quickBid_3H', val: '3♥' },
+        { id: 'quickBid_4H', val: '4♥' }
+      ];
+      map.forEach(item => {
+        const btn = document.getElementById(item.id);
+        if (btn) {
+          btn.className = currentBid === item.val
+            ? 'bid-choice-btn bid-choice-btn-active'
+            : 'bid-choice-btn';
+        }
+      });
+    }
+
+    function updateStepHeaderAndPills() {
+      const doneCount = countCompletedHands();
+      const pct = Math.round((doneCount / 6) * 100);
+      document.getElementById('overallProgressText').textContent = `${doneCount} of 6 hands completed`;
+      document.getElementById('progressBarFill').style.width = `${pct}%`;
+      document.getElementById('progressBarTrack').setAttribute('aria-valuenow', String(doneCount));
+
+      // Render step pills
+      const pillsEl = document.getElementById('stepPillsContainer');
+      const steps = [
+        { step: 0, label: 'Intro' },
+        { step: 1, label: 'Hand 1' },
+        { step: 2, label: 'Hand 2' },
+        { step: 3, label: 'Hand 3' },
+        { step: 4, label: 'Hand 4' },
+        { step: 5, label: 'Hand 5' },
+        { step: 6, label: 'Hand 6' },
+        { step: 7, label: 'Recap' }
+      ];
+
+      pillsEl.innerHTML = steps.map(s => {
+        const isActive = state.currentStep === s.step;
+        let cls = 'step-pill';
+        let suffix = '';
+        if (s.step >= 1 && s.step <= 6) {
+          const hs = state.hands[String(s.step)];
+          const hasQ = hs.isConfused || hs.confusedQuestion.trim().length > 0;
+          const hasAns = hs.points.trim().length > 0 && hs.bid.trim().length > 0;
+          if (hasQ) {
+            cls += ' step-pill-confused';
+            suffix = ' ?';
+          } else if (hasAns) {
+            cls += ' step-pill-done';
+            suffix = ' ✓';
+          }
+        }
+        if (isActive) {
+          cls = 'step-pill step-pill-active';
+        }
+        return `<button type="button" onclick="goToStep(${s.step})" class="${cls}">${escapeHtml(s.label + suffix)}</button>`;
+      }).join('');
+
+      // Update current hand status pill if on a hand
+      if (state.currentStep >= 1 && state.currentStep <= 6) {
+        const hs = state.hands[String(state.currentStep)];
+        const statusPill = document.getElementById('currentHandStatusPill');
+        const hasQ = hs.isConfused || hs.confusedQuestion.trim().length > 0;
+        const hasAns = hs.points.trim().length > 0 && hs.bid.trim().length > 0;
+        if (hasQ && hasAns) {
+          statusPill.className = 'badge badge-burgundy';
+          statusPill.textContent = 'Answered + Question for Mob';
+        } else if (hasQ) {
+          statusPill.className = 'badge badge-burgundy';
+          statusPill.textContent = 'Flagged: I’m confused';
+        } else if (hasAns) {
+          statusPill.className = 'badge badge-baize';
+          statusPill.textContent = 'Answer saved';
+        } else {
+          statusPill.className = 'badge badge-stone';
+          statusPill.textContent = 'In progress';
+        }
+      }
+    }
+
+    function renderSuitHoldings(hand) {
+      return `
+        <div class="suit-row">
+          <span class="suit-symbol-col suit-spade" title="Spades">♠</span>
+          <span class="suit-cards-col">${escapeHtml(hand.spades)}</span>
+        </div>
+        <div class="suit-row">
+          <span class="suit-symbol-col suit-heart" title="Hearts">♥</span>
+          <span class="suit-cards-col">${escapeHtml(hand.hearts)}</span>
+        </div>
+        <div class="suit-row">
+          <span class="suit-symbol-col suit-diamond" title="Diamonds">♦</span>
+          <span class="suit-cards-col">${escapeHtml(hand.diamonds)}</span>
+        </div>
+        <div class="suit-row">
+          <span class="suit-symbol-col suit-club" title="Clubs">♣</span>
+          <span class="suit-cards-col">${escapeHtml(hand.clubs)}</span>
+        </div>
+      `;
+    }
+
+    function buildFormattedRecapText() {
+      const lines = [];
+      const who = state.learnerName.trim() ? state.learnerName.trim() : 'Bridge Learner';
+      lines.push(`Lesson 1E — First Six Bridge Hands (${who})`);
+      lines.push(`Partner opens 1♥ (Five-Card Major Bidding)`);
+      lines.push(`================================================`);
+      lines.push('');
+
+      LESSON_1E_SIX_HANDS.forEach(h => {
+        const hs = state.hands[String(h.hand_number)] || { points: '', bid: '', why: '', confusedQuestion: '' };
+        lines.push(`${h.label}:`);
+        lines.push(`  Holdings : ♠ ${h.spades} | ♥ ${h.hearts} | ♦ ${h.diamonds} | ♣ ${h.clubs}`);
+        lines.push(`  Points   : ${hs.points.trim() ? hs.points.trim() + ' TCP' : '(not entered)'}`);
+        lines.push(`  Bid      : ${hs.bid.trim() || '(not entered)'}`);
+        if (hs.why.trim()) {
+          lines.push(`  Why      : ${hs.why.trim()}`);
+        }
+        if (hs.confusedQuestion.trim() || hs.isConfused) {
+          lines.push(`  Question : ${hs.confusedQuestion.trim() || 'Flagged "I’m confused" on this hand.'}`);
+        }
+        lines.push('');
+      });
+
+      if (state.overallNote.trim()) {
+        lines.push(`Overall Note / Question for Mob:`);
+        lines.push(`  ${state.overallNote.trim()}`);
+        lines.push('');
+      }
+      return lines.join('\n');
+    }
+
+    function updateRecapTextOutput() {
+      const fallbackEl = document.getElementById('recapTextFallback');
+      if (fallbackEl) {
+        fallbackEl.value = buildFormattedRecapText();
+      }
+    }
+
+    function renderRecapView() {
+      const grid = document.getElementById('recapHandsGrid');
+      grid.innerHTML = LESSON_1E_SIX_HANDS.map(h => {
+        const hs = state.hands[String(h.hand_number)];
+        const hasQ = hs.isConfused || hs.confusedQuestion.trim().length > 0;
+        const hasAns = hs.points.trim().length > 0 && hs.bid.trim().length > 0;
+        return `
+          <div class="club-panel" style="padding: 1.15rem;">
+            <div class="flex items-center justify-between gap-2 border-b pb-2 mb-2">
+              <div>
+                <h3 class="serif-heading text-base font-bold m-0">${escapeHtml(h.label)}</h3>
+                <div class="font-mono text-xs mt-1 flex flex-wrap gap-x-2 gap-y-0.5">
+                  <span style="white-space: nowrap;"><span class="suit-spade">♠</span> ${escapeHtml(h.spades)}</span> ·
+                  <span style="white-space: nowrap;"><span class="suit-heart">♥</span> ${escapeHtml(h.hearts)}</span> ·
+                  <span style="white-space: nowrap;"><span class="suit-diamond">♦</span> ${escapeHtml(h.diamonds)}</span> ·
+                  <span style="white-space: nowrap;"><span class="suit-club">♣</span> ${escapeHtml(h.clubs)}</span>
+                </div>
+              </div>
+              <button type="button" onclick="goToStep(${h.hand_number})" class="btn-ivory" style="padding: 0.3rem 0.65rem; font-size: 0.76rem;">
+                Edit Hand ${h.hand_number}
+              </button>
+            </div>
+
+            <div class="space-y-2 text-xs">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="badge ${hasAns ? 'badge-baize' : 'badge-stone'}">
+                  Points: ${escapeHtml(hs.points.trim() ? hs.points.trim() + ' TCP' : 'Not entered')}
+                </span>
+                <span class="badge ${hasAns ? 'badge-baize' : 'badge-stone'}">
+                  Proposed Bid: ${escapeHtml(hs.bid.trim() || 'Not entered')}
+                </span>
+              </div>
+              ${hs.why.trim() ? `
+                <div style="color: var(--charcoal-700);">
+                  <strong>Why:</strong> ${escapeHtml(hs.why.trim())}
+                </div>
+              ` : ''}
+              ${hasQ ? `
+                <div class="club-panel-burgundy" style="padding: 0.6rem 0.8rem;">
+                  <strong>Question for Mob:</strong> ${escapeHtml(hs.confusedQuestion.trim() || 'Flagged "I’m confused" on this hand.')}
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const noteEl = document.getElementById('overallNoteInput');
+      if (noteEl) noteEl.value = state.overallNote;
+      updateRecapTextOutput();
+    }
+
+    function renderView() {
+      updateStepHeaderAndPills();
+
+      const vIntro = document.getElementById('viewIntro');
+      const vHand = document.getElementById('viewSingleHand');
+      const vRecap = document.getElementById('viewRecap');
+
+      vIntro.classList.toggle('hidden', state.currentStep !== 0);
+      vHand.classList.toggle('hidden', state.currentStep < 1 || state.currentStep > 6);
+      vRecap.classList.toggle('hidden', state.currentStep !== 7);
+
+      if (state.currentStep === 0) {
+        const nameEl = document.getElementById('learnerNameInput');
+        if (nameEl) nameEl.value = state.learnerName;
+        const doneCount = countCompletedHands();
+        const startBtn = document.getElementById('btnStartExercise');
+        if (startBtn) {
+          startBtn.textContent = doneCount > 0 ? 'Continue Hand 1 of 6 →' : 'Start Hand 1 of 6 →';
+        }
+        return;
+      }
+
+      if (state.currentStep >= 1 && state.currentStep <= 6) {
+        const handObj = LESSON_1E_SIX_HANDS[state.currentStep - 1];
+        const hs = state.hands[String(state.currentStep)];
+
+        document.getElementById('currentHandStepBadge').textContent = `Hand ${state.currentStep} of 6`;
+        document.getElementById('currentHandHeading').textContent = handObj.label;
+        document.getElementById('currentHandSuitsContainer').innerHTML = renderSuitHoldings(handObj);
+        document.getElementById('currentHandSourceNote').textContent = handObj.source_note;
+
+        document.getElementById('handPointsInput').value = hs.points;
+        document.getElementById('handBidSelect').value = hs.bid;
+        document.getElementById('handWhyInput').value = hs.why;
+        document.getElementById('handConfusedInput').value = hs.confusedQuestion;
+
+        const showConfused = hs.isConfused || hs.confusedQuestion.trim().length > 0;
+        document.getElementById('confusedBoxContainer').classList.toggle('hidden', !showConfused);
+
+        const prevBtn = document.getElementById('btnPrevHand');
+        const nextBtn = document.getElementById('btnNextHand');
+        prevBtn.textContent = state.currentStep === 1 ? '← Back to Intro' : `← Back to Hand ${state.currentStep - 1}`;
+        nextBtn.textContent = state.currentStep === 6 ? 'Finish & View Recap →' : `Next: Hand ${state.currentStep + 1} →`;
+
+        updateQuickBidButtons();
+        return;
+      }
+
+      if (state.currentStep === 7) {
+        renderRecapView();
+      }
+    }
+
+    function copyRecapToClipboard() {
+      updateRecapTextOutput();
+      const fallbackEl = document.getElementById('recapTextFallback');
+      const text = fallbackEl.value;
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => {
+            showToast('Recap copied! Paste it into your email to Mob.');
+          }).catch(() => {
+            fallbackEl.focus();
+            fallbackEl.select();
+            document.execCommand('copy');
+            showToast('Recap selected & copied! Paste it into your email to Mob.');
+          });
+        } else {
+          fallbackEl.focus();
+          fallbackEl.select();
+          document.execCommand('copy');
+          showToast('Recap selected & copied! Paste it into your email to Mob.');
+        }
+      } catch (e) {
+        fallbackEl.focus();
+        fallbackEl.select();
+        showToast('Text selected in the box below—press Ctrl+C (or Cmd+C) to copy.');
+      }
+    }
+
+    function selectAllFallbackText() {
+      const fallbackEl = document.getElementById('recapTextFallback');
+      if (!fallbackEl) return;
+      fallbackEl.focus();
+      fallbackEl.select();
+      showToast('All recap text selected—press Ctrl+C (or Cmd+C) to copy.');
+    }
+
+    function downloadRecapTextFile() {
+      updateRecapTextOutput();
+      const text = document.getElementById('recapTextFallback').value;
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'lesson_1e_first_six_hands.txt';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        URL.revokeObjectURL(a.href);
+        a.remove();
+      }, 400);
+      showToast('Downloaded lesson_1e_first_six_hands.txt');
+    }
+
+    function resetAllLearnerWork() {
+      state = createBlankState();
+      try {
+        window.localStorage.removeItem(STORAGE_KEY);
+      } catch (e) {}
+      renderView();
+      showToast('Cleared saved browser answers.');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSavedState();
+      renderView();
+    });
+  </script>
+</body>
+</html>
